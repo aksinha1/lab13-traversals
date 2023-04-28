@@ -1,4 +1,4 @@
-package src.bst;
+package bst;
 
 import java.util.Stack;
 
@@ -122,7 +122,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	
 	private void preOrderRecurse(BSTNode<T> node) {
 		
-		System.out.print(node + "");
+		System.out.print(node + " ");
 		if(node.leftChild != null)
 		preOrderRecurse(node.leftChild);
 		if(node.rightChild != null)
@@ -149,9 +149,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	
 	public void inOrderRecurse(BSTNode<T> node) {
 		if(node != null) {
-			postOrderRecurse(node.leftChild);
+			inOrderRecurse(node.leftChild);
 			System.out.print(node.data + " ");
-			postOrderRecurse(node.leftChild);
+			inOrderRecurse(node.rightChild);
 		}
 	}
 	//Traverse the tree in an inorder fashion but using a stack
@@ -173,7 +173,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	public void postOrderRecurse(BSTNode<T> node) {
 		if(node != null) {
 			postOrderRecurse(node.leftChild);
-			postOrderRecurse(node.leftChild);
+			postOrderRecurse(node.rightChild);
 			System.out.print(node.data + " ");
 		}
 	}
