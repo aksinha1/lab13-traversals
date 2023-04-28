@@ -188,7 +188,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		if(root!=null) {
 			postHelper.push(root);
 			while(!postHelper.isEmpty()) {
-				//how should post and postHelper be updated?
+				BSTNode<T> node = postHelper.pop();
+				post.push(node);
+				
+				if(node.leftChild != null)
+					postHelper.push(node.leftChild);
+				
+				if(node.rightChild != null)
+					postHelper.push(node.rightChild);
 			}
 			
 			while(!post.isEmpty()) {
@@ -223,7 +230,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		bst.insert(8);
 		bst.insert(15);
 		bst.insert(10);
-		bst.insert(3);
 		System.out.println(bst);
 	
 		System.out.println("In Order Traversals");
